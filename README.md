@@ -16,5 +16,13 @@ DeepNextFace is a 3D face reconstruction library from a single monocular RGB ima
   * **python recontruct.py --input *path-to-your-folder-that-contains-all-ur-images* --output *output-path-where-to-save-results***
 
 # How it works
-DeepNextFace is a reproduction of [our early work](https://openaccess.thecvf.com/content/ICCV2021/papers/Dib_Towards_High_Fidelity_Monocular_Face_Reconstruction_With_Rich_Reflectance_Using_ICCV_2021_paper.pdf)>  with some slight differences (see below). 
+DeepNextFace is a reproduction of [our early work](https://openaccess.thecvf.com/content/ICCV2021/papers/Dib_Towards_High_Fidelity_Monocular_Face_Reconstruction_With_Rich_Reflectance_Using_ICCV_2021_paper.pdf) with some slight differences (see below). 
 The network architecture is composed mainly of two stages. First, a resnet encoder takes as input an RGB image and project it into a latent code, a fully connected layer takes as input the latent code and predicts the 3DMM parameters (shape identity, expression), head pose (rotation translation), camera (focal) and scene light (with spherical harmonics). The second stage is composed of two decoders, trained to reconstruct a delta diffuse and specular maps from the latent code. These detlta maps are added on top of the statistical albedo maps (obtained from the first stage) to captrue medium-frequency albedo details outside the span of the statistical prior space. This allow to capture more details in the final reflectance maps (such as beards and makeup). Please note that there is some slight difference in the network trained here and the one in our paper. For instance, The network used in DeepNextFace uses less epoches than in the paper which leads to some slight differences with the paper.
+
+# Limitations 
+* By design, DeepNextFace can only capture medium-frequency albedo details, and high frequency albedo details will not be captured. This is because the texture decoders operates on a compact representation of the input image (the latent code of the resnet)  our recent [work](https://arxiv.org/abs/2203.07732) captures more albedo detaisl.
+* DeepNextFace cannot capture fine geometry details (wrinkles, pores...). s. our recent [work](https://arxiv.org/abs/2203.07732) captures fine scale geometric details.
+* Texture resolution is limited to 256x256, due to gpu memory limitation. Training on large texture dimension is possible but require more gpus.
+* separating albedo color from light color is an ill-posed problem and some albedo skin tone can get baked in the estimated light. This is discussed in the paper.
+ More details on these limitations can be found in the paper.
+ 
