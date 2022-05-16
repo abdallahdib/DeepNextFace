@@ -4,6 +4,7 @@ DeepNextFace is a 3D face reconstruction library from a single monocular RGB ima
 <p align="center"><img src="resources/teaser4.gif" style="float: left; width: 60%; margin-right: 1%; margin-bottom: 0.5em;"></p>
 
 # Features: 
+* The network is trained in a fully self-supervised manner on unlabeled images.  
 * Estimates face geometry 
 * Estimates medium-details face reflectance (diffuse and specular) based on simplified cook-torrance BRDF 
 * robust against extreme head poses and expressions
@@ -29,17 +30,18 @@ DeepNextFace is a reproduction of [our early work](https://openaccess.thecvf.com
 The network architecture is composed mainly of two stages. First, a resnet encoder takes as input an RGB image and project it into a latent code, a fully connected layer takes as input the latent code and predicts the 3DMM parameters (shape identity, expression), head pose (rotation translation), camera (focal) and scene light (with spherical harmonics). The second stage is composed of two decoders, trained to reconstruct a delta diffuse and specular maps from the latent code. These detlta maps are added on top of the statistical albedo maps (obtained from the first stage) to captrue medium-frequency albedo details outside the span of the statistical prior space. This allow to capture more details in the final reflectance maps (such as beards and makeup). Please note that there is some slight difference in the network trained here and the one in our paper. For instance, The network used in DeepNextFace uses less epoches than in the paper which leads to some slight differences with the paper.
 
 # Limitations 
-* By design, DeepNextFace can only capture medium-frequency albedo details, and high frequency albedo details will not be captured. This is because the texture decoders operates on a compact representation of the input image (the latent code of the resnet)  our recent [work](https://arxiv.org/abs/2203.07732) captures more albedo detaisl.
+* By design, DeepNextFace can only capture medium-frequency albedo details, and high frequency albedo details will not be captured. This is because the texture decoders operates on a compact representation of the input image (the latent code of the resnet)  our recent [work](https://arxiv.org/abs/2203.07732) captures more albedo details.
 * DeepNextFace cannot capture fine geometry details (wrinkles, pores...). s. our recent [work](https://arxiv.org/abs/2203.07732) captures fine scale geometric details.
 * Texture resolution is limited to 256x256, due to gpu memory limitation. Training on large texture dimension is possible but require more gpus.
 * separating albedo color from light color is an ill-posed problem and some albedo skin tone can get baked in the estimated light. This is discussed in the paper.
  More details on these limitations can be found in the paper.
  
  # License
-NextFace is available for free, under GPL license, to use for research and educational purposes only. Please check LICENSE file.
+DeepNextFace is available for free, under GPL license, to use for research and educational purposes only. Any commercial usage if not allowed as the code source of DeepNextFace was released in the objective to help pushing the state-of-the art of monocular face reconstruction via self-supervised learning.  Please check LICENSE file. 
+
 
 # Acknowledgements
- [redner](https://github.com/BachiLi/redner/) is used for ray tracing, albedo model from [here](https://github.com/waps101/AlbedoMM/). Expression model is based on [FaceWareHouse3D dataset](http://kunzhou.net/zjugaps/facewarehouse/) similar to the one used by [Garrido et al.,](http://vcai.mpi-inf.mpg.de/projects/PersonalizedFaceRig/)
+ DeepNextFace relies on [NextFace](https://github.com/abdallahdib/NextFace/edit/main/README.md) for handling the rendering and morphable model part . [redner](https://github.com/BachiLi/redner/) is used for ray tracing, albedo model from [here](https://github.com/waps101/AlbedoMM/). Expression model is based on [FaceWareHouse3D dataset](http://kunzhou.net/zjugaps/facewarehouse/) similar to the one used by [Garrido et al., 2016](http://vcai.mpi-inf.mpg.de/projects/PersonalizedFaceRig/)
 
 # contact 
 mail: deeb.abdallah @at gmail
