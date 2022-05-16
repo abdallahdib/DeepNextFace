@@ -3,6 +3,15 @@ DeepNextFace is a 3D face reconstruction library from a single monocular RGB ima
 <p align="center"><img src="resources/teaser1.gif" style="float: left; width: 60%; margin-right: 1%; margin-bottom: 0.5em;"></p>
 <p align="center"><img src="resources/teaser4.gif" style="float: left; width: 60%; margin-right: 1%; margin-bottom: 0.5em;"></p>
 
+# Features: 
+* Estimates face geometry 
+* Estimates medium-details face reflectance (diffuse and specular) based on simplified cook-torrance BRDF 
+* robust against extreme head poses and expressions
+* robust against challenging lighting conditions and shadows. 
+* Estimates scene light with spherical harmonics
+* Estimates head pose and orientation
+* Runs on both cpu and cuda-enabled gpu
+* 
 # Installation
 * Clone the repository 
 * Execute the commands in 'INSTALL' file. these commands create a new conda environment called deepNextFace and install required packages. An 'environment.yml' is also provided. The library is tested with torch 1.3.1, torchvision 0.4.2 and cuda toolkit 10.1, but it should also work with recent pytorch versions.   
