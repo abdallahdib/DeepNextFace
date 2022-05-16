@@ -8,3 +8,6 @@ DeepNextFace is a 3D face reconstruction library from a single monocular RGB ima
 * Execute the commands in 'INSTALL' file. these commands create a new conda environment called deepNextFace and install required packages. An 'environment.yml' is also provided. The library is tested with torch 1.3.1, torchvision 0.4.2 and cuda toolkit 10.1, but it should also work with recent pytorch versions.   
 * Activate the environment: conda activate deepNextFace
 * Download basel face model 2009 from [here](https://faces.dmi.unibas.ch/bfm/index.php?nav=1-2&id=downloads), just fill the form and you will receive an instant direct download link into your inbox. Downloaded  **01_MorphableModel.mat** file and put it inside **./morphableModel2009** directory
+
+
+# How to use
