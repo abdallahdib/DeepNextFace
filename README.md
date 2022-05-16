@@ -35,3 +35,45 @@ The network architecture is composed mainly of two stages. First, a resnet encod
 * separating albedo color from light color is an ill-posed problem and some albedo skin tone can get baked in the estimated light. This is discussed in the paper.
  More details on these limitations can be found in the paper.
  
+ # License
+NextFace is available for free, under GPL license, to use for research and educational purposes only. Please check LICENSE file.
+
+# Acknowledgements
+ [redner](https://github.com/BachiLi/redner/) is used for ray tracing, albedo model from [here](https://github.com/waps101/AlbedoMM/). Expression model is based on [FaceWareHouse3D dataset](http://kunzhou.net/zjugaps/facewarehouse/) similar to the one used by [Garrido et al.,](http://vcai.mpi-inf.mpg.de/projects/PersonalizedFaceRig/)
+
+# contact 
+mail: deeb.abdallah @at gmail
+
+twitter: abdallah_dib
+
+# Citation 
+If you use DeepNextFace and find it useful in your work, these works are relevant for you:
+
+```
+
+@inproceedings{dib2021towards,
+  title={Towards High Fidelity Monocular Face Reconstruction with Rich Reflectance using Self-supervised Learning and Ray Tracing},
+  author={Dib, Abdallah and Thebault, Cedric and Ahn, Junghyun and Gosselin, Philippe-Henri and Theobalt, Christian and Chevallier, Louis},
+  booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision},
+  pages={12819--12829},
+  year={2021}
+}
+
+@article{dib2022s2f2,
+  title={S2F2: Self-Supervised High Fidelity Face Reconstruction from Monocular Image},
+  author={Dib, Abdallah and Ahn, Junghyun and Thebault, Cedric and Gosselin, Philippe-Henri and Chevallier, Louis},
+  journal={arXiv preprint arXiv:2203.07732},
+  year={2022}
+}
+
+@inproceedings{dib2021practical,
+  title={Practical face reconstruction via differentiable ray tracing},
+  author={Dib, Abdallah and Bharaj, Gaurav and Ahn, Junghyun and Th{\'e}bault, C{\'e}dric and Gosselin, Philippe and Romeo, Marco and Chevallier, Louis},
+  booktitle={Computer Graphics Forum},
+  volume={40},
+  number={2},
+  pages={153--164},
+  year={2021},
+  organization={Wiley Online Library}
+}
+
