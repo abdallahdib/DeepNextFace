@@ -11,3 +11,6 @@ DeepNextFace is a 3D face reconstruction library from a single monocular RGB ima
 
 
 # How to use
+## Reconstruction from multiple images (batch reconstruction)
+* Put your images in the same folder and run the following command for reconstruction: 
+  * **python recontruct.py --input *path-to-your-folder-that-contains-all-ur-images* --output *output-path-where-to-save-results***
